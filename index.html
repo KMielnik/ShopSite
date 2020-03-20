@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>mk41446</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/13b671379c.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Navbar-->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">mk41446</a>
+      <button
+        class="navbar-toggler d-lg-none"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html"
+              >Strona Główna <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="http://lcieszynski.zut.edu.pl/fileadmin/DPD/instrukcja_2019.pdf"
+              >Instrukcja</a
+            >
+          </li>
+        </ul>
+
+        <button
+          class="btn btn-primary fa fa-shopping-cart my-2 my-sm-0"
+          type="button"
+          data-toggle="modal"
+          data-target="#cartModal"
+        >
+          Koszyk
+        </button>
+      </div>
+    </nav>
+    <!-- /Navbar -->
+
+    <!-- Cart Modal -->
+    <div
+      class="modal fade"
+      id="cartModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modelTitleId"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Twój koszyk</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Body
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Cart Modal -->
+
+    <!-- Body -->
+    <div class="container-fluid bg-light">
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <div class="container-fluid mx-auto my-2">
+            <form>
+              <div class="form-group">
+                <label for="productName">Nazwa towaru</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="productName"
+                  id="productName"
+                />
+              </div>
+              <div class="form-group">
+                <label for="productCode">Kod towaru</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="productCode"
+                  id="productCode"
+                />
+              </div>
+              <div class="form-group">
+                <label for="productPrice">Cena netto</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="productPrice"
+                  id="productPrice"
+                />
+              </div>
+              <div class="form-group">
+                <label for="productVat">VAT</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="productVat"
+                  id="productVat"
+                />
+              </div>
+              <div class="form-group">
+                <label for="productPriceVat">Cena brutto</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="productPriceVat"
+                  id="productPriceVat"
+                />
+              </div>
+              <div class="form-group">
+                <label for="productCategory">Kategoria towaru</label>
+                <select
+                  class="form-control"
+                  name="productCategory"
+                  id="productCategory"
+                >
+                  <option>Elektronika</option>
+                  <option>Broń</option>
+                  <option>Materace</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="productOptionals">Dodatkowe opcje</label>
+                <select
+                  multiple
+                  class="custom-select"
+                  name="productOptionals"
+                  id="productOptionals"
+                >
+                  <option>Brokat</option>
+                  <option>Zmielenie</option>
+                  <option>Zamoczenie</option>
+                  <option>Złamanie</option>
+                  <option>Opcja niespodzianka</option>
+                </select>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">Ocena: </label>
+                <label class="form-check-label px-2">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="productRating"
+                    id="productRating"
+                    value="1"
+                  />
+                  1
+                </label>
+                <label class="form-check-label px-2">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="productRating"
+                    id="productRating"
+                    value="1"
+                  />
+                  2
+                </label>
+                <label class="form-check-label px-2">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="productRating"
+                    id="productRating"
+                    value="1"
+                  />
+                  3
+                </label>
+                <label class="form-check-label px-2">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="productRating"
+                    id="productRating"
+                    value="1"
+                  />
+                  4
+                </label>
+                <label class="form-check-label px-2">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="productRating"
+                    id="productRating"
+                    value="1"
+                  />
+                  5
+                </label>
+              </div>
+              <div class="form-group">
+                <label for="productImage">Zdjęcie towaru</label>
+                <input
+                  type="file"
+                  class="form-control-file"
+                  name="productImage"
+                  id="productImage"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Dodaj</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="card shadow mx-auto my-2" style="width: 10rem;">
+            <img
+              class="card-img-top"
+              src="https://www.neolutionesport.com/wp-content/uploads/2017/03/default-avatar-knives-ninja.png"
+            />
+            <div class="card-body">
+              <h4 class="card-title">Kamil Mielnik</h4>
+              <p class="card-text">Student</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Body -->
+
+    <!-- Footer -->
+    <footer class="sticky-footer bg-dark text-white-50">
+      <div class="container text-center">
+        Stopka
+      </div>
+    </footer>
+    <!-- /Footer -->
+
+    <!-- Bootstrap includes -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

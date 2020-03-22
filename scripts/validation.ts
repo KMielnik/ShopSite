@@ -182,6 +182,23 @@ function validateForm(): boolean {
   );
 }
 
+function _clearValidation() {
+  $("#productName").removeClass("is-valid");
+  $("#productCode").removeClass("is-valid");
+  $("#productPrice").removeClass("is-valid");
+  $("#productVat").removeClass("is-valid");
+  $("#productPriceVat").removeClass("is-valid");
+  $("#productCategory").removeClass("is-valid");
+  $("#productOptionals").removeClass("is-valid");
+  $("input[name=productRating]:checked").removeClass("is-valid");
+  document.getElementById("productRating1").removeAttribute("checked");
+  document.getElementById("productRating2").removeAttribute("checked");
+  document.getElementById("productRating3").removeAttribute("checked");
+  document.getElementById("productRating4").removeAttribute("checked");
+  document.getElementById("productRating5").removeAttribute("checked");
+  $("#productImage").removeClass("is-valid");
+}
+
 function onSubmitFormClick() {
   if (validateForm()) {
     if (productsList.some(product => product.name == $("#productName").val())) {
@@ -203,15 +220,31 @@ function onSubmitFormClick() {
       refreshProductsListTable();
       (document.getElementById("productsForm") as HTMLFormElement).reset();
 
-      $("#productName").removeClass("is-valid");
-      $("#productCode").removeClass("is-valid");
-      $("#productPrice").removeClass("is-valid");
-      $("#productVat").removeClass("is-valid");
-      $("#productPriceVat").removeClass("is-valid");
-      $("#productCategory").removeClass("is-valid");
-      $("#productOptionals").removeClass("is-valid");
-      $("input[name=productRating]:checked").removeClass("is-valid");
-      $("#productImage").removeClass("is-valid");
+      _clearValidation();
     }
+  }
+}
+
+function editProduct(index: number) {
+  if (validateForm()) {
+    document.getElementById("editProductButton").hidden = true;
+    document.getElementById("addProductButton").hidden = false;
+
+    productsList[index].name = $("#productName").val() as string;
+    productsList[index].code = $("#productCode").val() as string;
+    productsList[index].price = $("#productPrice").val() as number;
+    productsList[index].Vat = $("#productVat").val() as number;
+    productsList[index].priceVat = $("#productPriceVat").val() as number;
+    productsList[index].category = $("#productCategory").val() as string;
+    productsList[index].optionals = $("#productOptionals").val() as string[];
+    productsList[index].rating = $(
+      "input[name=productRating]:checked"
+    ).val() as number;
+    productsList[index].image = $("#productImage").val() as string;
+
+    refreshProductsListTable();
+    (document.getElementById("productsForm") as HTMLFormElement).reset();
+
+    _clearValidation();
   }
 }

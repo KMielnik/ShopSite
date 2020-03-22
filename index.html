@@ -322,11 +322,20 @@
                 </div>
               </div>
               <button
+                id="addProductButton"
                 type="button"
                 class="btn btn-primary"
                 onclick="onSubmitFormClick()"
               >
                 Dodaj
+              </button>
+              <button
+                id="editProductButton"
+                type="button"
+                class="btn btn-warning"
+                hidden
+              >
+                Edytuj
               </button>
             </form>
           </div>
@@ -334,8 +343,20 @@
           <div class="container-fluid mx-auto my-2">
             <div class="d-flex justify-content-between">
               <div class="btn-group" role="group">
-                <button type="button" class="btn btn-secondary" onclick="exportProductsToJSON()">Export</button>
-                <button type="button" class="btn btn-secondary" onclick="importProductsFromJSON()">Import</button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  onclick="exportProductsToJSON()"
+                >
+                  Export
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  onclick="importProductsFromJSON()"
+                >
+                  Import
+                </button>
               </div>
 
               <div class="dropdown open">
@@ -347,12 +368,42 @@
                   Sortuj
                 </button>
                 <div class="dropdown-menu">
-                  <button class="dropdown-item" onclick="sortProductsTable(4, 'a')">Cena brutto rosnąco</button>
-                  <button class="dropdown-item" onclick="sortProductsTable(4, 'd')">Cena brutto malejąco</button>
-                  <button class="dropdown-item" onclick="sortProductsTable(7, 'a')">Ocena rosnąco</button>
-                  <button class="dropdown-item" onclick="sortProductsTable(7, 'd')">Ocena malejąco</button>
-                  <button class="dropdown-item" onclick="sortProductsTable(0, 'a')">Nazwa rosnąco</button>
-                  <button class="dropdown-item" onclick="sortProductsTable(0, 'd')">Nazwa malejąco</button>
+                  <button
+                    class="dropdown-item"
+                    onclick="sortProductsTable(4, 'a')"
+                  >
+                    Cena brutto rosnąco
+                  </button>
+                  <button
+                    class="dropdown-item"
+                    onclick="sortProductsTable(4, 'd')"
+                  >
+                    Cena brutto malejąco
+                  </button>
+                  <button
+                    class="dropdown-item"
+                    onclick="sortProductsTable(7, 'a')"
+                  >
+                    Ocena rosnąco
+                  </button>
+                  <button
+                    class="dropdown-item"
+                    onclick="sortProductsTable(7, 'd')"
+                  >
+                    Ocena malejąco
+                  </button>
+                  <button
+                    class="dropdown-item"
+                    onclick="sortProductsTable(0, 'a')"
+                  >
+                    Nazwa rosnąco
+                  </button>
+                  <button
+                    class="dropdown-item"
+                    onclick="sortProductsTable(0, 'd')"
+                  >
+                    Nazwa malejąco
+                  </button>
                 </div>
               </div>
             </div>

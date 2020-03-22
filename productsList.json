@@ -8,7 +8,7 @@
     "category": "Broń",
     "optionals": ["Zmielenie", "Opcja niespodzianka"],
     "rating": "4",
-    "image": "default.png"
+    "image": "carrot.png"
   },
   {
     "name": "Maseczka",
@@ -52,7 +52,7 @@
     "category": "Materace",
     "optionals": ["Zmielenie", "Zamoczenie"],
     "rating": "4",
-    "image": "default.png"
+    "image": "cake.png"
   },
   {
     "name": "Drewno",
@@ -63,7 +63,7 @@
     "category": "Elektronika",
     "optionals": ["Brokat", "Złamanie"],
     "rating": "2",
-    "image": "default.png"
+    "image": "wood.png"
   },
   {
     "name": "Baton",
@@ -85,7 +85,7 @@
     "category": "Elektronika",
     "optionals": ["Zmielenie", "Złamanie"],
     "rating": "5",
-    "image": "default.png"
+    "image": "controller.png"
   },
   {
     "name": "Płatki",

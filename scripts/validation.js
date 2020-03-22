@@ -119,6 +119,22 @@ function validateForm() {
         isProductRatingValid &&
         isProductPhotoValid);
 }
+function _clearValidation() {
+    $("#productName").removeClass("is-valid");
+    $("#productCode").removeClass("is-valid");
+    $("#productPrice").removeClass("is-valid");
+    $("#productVat").removeClass("is-valid");
+    $("#productPriceVat").removeClass("is-valid");
+    $("#productCategory").removeClass("is-valid");
+    $("#productOptionals").removeClass("is-valid");
+    $("input[name=productRating]:checked").removeClass("is-valid");
+    document.getElementById("productRating1").removeAttribute("checked");
+    document.getElementById("productRating2").removeAttribute("checked");
+    document.getElementById("productRating3").removeAttribute("checked");
+    document.getElementById("productRating4").removeAttribute("checked");
+    document.getElementById("productRating5").removeAttribute("checked");
+    $("#productImage").removeClass("is-valid");
+}
 function onSubmitFormClick() {
     if (validateForm()) {
         if (productsList.some(product => product.name == $("#productName").val())) {
@@ -129,16 +145,26 @@ function onSubmitFormClick() {
             productsList.push(product);
             refreshProductsListTable();
             document.getElementById("productsForm").reset();
-            $("#productName").removeClass("is-valid");
-            $("#productCode").removeClass("is-valid");
-            $("#productPrice").removeClass("is-valid");
-            $("#productVat").removeClass("is-valid");
-            $("#productPriceVat").removeClass("is-valid");
-            $("#productCategory").removeClass("is-valid");
-            $("#productOptionals").removeClass("is-valid");
-            $("input[name=productRating]:checked").removeClass("is-valid");
-            $("#productImage").removeClass("is-valid");
+            _clearValidation();
         }
+    }
+}
+function editProduct(index) {
+    if (validateForm()) {
+        document.getElementById("editProductButton").hidden = true;
+        document.getElementById("addProductButton").hidden = false;
+        productsList[index].name = $("#productName").val();
+        productsList[index].code = $("#productCode").val();
+        productsList[index].price = $("#productPrice").val();
+        productsList[index].Vat = $("#productVat").val();
+        productsList[index].priceVat = $("#productPriceVat").val();
+        productsList[index].category = $("#productCategory").val();
+        productsList[index].optionals = $("#productOptionals").val();
+        productsList[index].rating = $("input[name=productRating]:checked").val();
+        productsList[index].image = $("#productImage").val();
+        refreshProductsListTable();
+        document.getElementById("productsForm").reset();
+        _clearValidation();
     }
 }
 //# sourceMappingURL=validation.js.map

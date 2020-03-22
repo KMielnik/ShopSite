@@ -1,9 +1,105 @@
 let productsList: Product[] = [];
 
 function createButtonsForRow(index: number): HTMLDivElement {
-  let div = document.createElement("div");
-div.classList.add("container-fluid");
-  return div;
+  let deleteButton = document.createElement("button");
+  deleteButton.appendChild(document.createTextNode("Usuń"));
+  deleteButton.setAttribute("type", "button");
+  deleteButton.classList.add("btn");
+  deleteButton.classList.add("btn-danger");
+  deleteButton.onclick = e => {
+    productsList.splice(index, 1);
+    refreshProductsListTable();
+    alert("Usunięto wiersz: " + (index + 1));
+  };
+
+  let editButton = document.createElement("button");
+  editButton.appendChild(document.createTextNode("Edytuj"));
+  editButton.setAttribute("type", "button");
+  editButton.classList.add("btn");
+  editButton.classList.add("btn-warning");
+  editButton.onclick = e => {
+    document.getElementById("editProductButton").hidden = false;
+    document.getElementById("editProductButton").onclick = e =>
+      editProduct(index);
+    document.getElementById("addProductButton").hidden = true;
+
+    $("#productName").val(productsList[index].name);
+    $("#productCode").val(productsList[index].code);
+    $("#productPrice").val(productsList[index].price);
+    $("#productVat").val(productsList[index].Vat);
+    $("#productPriceVat").val(productsList[index].priceVat);
+    $("#productCategory").val(productsList[index].category);
+    $("#productOptionals").val(productsList[index].optionals);
+    switch (+productsList[index].rating) {
+      case 1:
+        console.log("XD");
+        
+        document
+          .getElementById("productRating1")
+          .setAttribute("checked", "true");
+        break;
+      case 2:
+        document
+          .getElementById("productRating2")
+          .setAttribute("checked", "true");
+        break;
+      case 3:
+        document
+          .getElementById("productRating3")
+          .setAttribute("checked", "true");
+        break;
+      case 4:
+        document
+          .getElementById("productRating4")
+          .setAttribute("checked", "true");
+        break;
+      case 5:
+        document
+          .getElementById("productRating5")
+          .setAttribute("checked", "true");
+        break;
+
+      default:
+        break;
+    }
+    $("#productImage").val(productsList[index].image);
+  };
+
+  let addToCartButton = document.createElement("button");
+  addToCartButton.appendChild(document.createTextNode("Do koszyka"));
+  addToCartButton.setAttribute("type", "button");
+  addToCartButton.classList.add("btn");
+  addToCartButton.classList.add("btn-success");
+  addToCartButton.onclick = e => {
+    let cart =
+      (JSON.parse(localStorage.getItem("cartProducts")) as Product[]) ?? [];
+
+    if (cart.some(product => product.name == productsList[index].name)) {
+      alert("Produkt już znajduje się w koszyku.");
+    } else {
+      cart.push(productsList[index]);
+      alert("Dodano do koszyka.");
+    }
+
+    localStorage.setItem("cartProducts", JSON.stringify(cart));
+  };
+
+  let buttonGroupDiv = document.createElement("div");
+  buttonGroupDiv.classList.add("btn-group-vertical");
+  buttonGroupDiv.classList.add("btn-group-sm");
+  buttonGroupDiv.classList.add("ml-auto");
+  buttonGroupDiv.setAttribute("role", "group");
+
+  let flexDiv = document.createElement("div");
+  flexDiv.classList.add("d-flex");
+  flexDiv.classList.add("mx-auto");
+
+  buttonGroupDiv.appendChild(addToCartButton);
+  buttonGroupDiv.appendChild(editButton);
+  buttonGroupDiv.appendChild(deleteButton);
+
+  flexDiv.appendChild(buttonGroupDiv);
+  return flexDiv;
 }
 
 function refreshProductsListTable() {
@@ -49,6 +145,28 @@ function sortProductsTable(column: number, order: string) {
   $("#productsTableHTML").trigger("sorton", [[[column, order]]]);
 }
 
+function exportProductsToJSON() {
+  document.addEventListener("copy", (e: ClipboardEvent) => {
+    e.clipboardData.setData("text/plain", JSON.stringify(productsList));
+    e.preventDefault();
+    document.removeEventListener("copy", this.e);
+  });
+  document.execCommand("copy");
+
+  alert("Skopiowano JSON do schowka");
+}
+
+function importProductsFromJSON() {
+  let xhhtp = new XMLHttpRequest();
+  xhhtp.onload = e => {
+    let products = JSON.parse(xhhtp.responseText) as Product[];
+    productsList = products;
+    refreshProductsListTable();
+  };
+  xhhtp.open("GET", "../productsList.json");
+  xhhtp.send();
+}
+
 $(function() {
   $("#productsTableHTML thead")
     .find("th:contains(Kod)")
@@ -75,28 +193,3 @@ $(function() {
     }
   });
 });
-
-function exportProductsToJSON()
-{
-  document.addEventListener('copy', (e: ClipboardEvent) => {
-    e.clipboardData.setData('text/plain', JSON.stringify(productsList));
-    e.preventDefault();
-    document.removeEventListener('copy', this.e);
-  });
-  document.execCommand('copy');
-
-  alert("Skopiowano JSON do schowka");
-}
-
-
-function importProductsFromJSON()
-{
-  let xhhtp = new XMLHttpRequest();
-  xhhtp.onload = (e)=>{
-    let products = JSON.parse(xhhtp.responseText) as Product[];
-    productsList = products;
-    refreshProductsListTable();
-  }
-  xhhtp.open("GET","../productsList.json");
-  xhhtp.send();
-}

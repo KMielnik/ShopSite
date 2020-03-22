@@ -66,7 +66,14 @@ function heBought() {
   refershCartTable();
   calculateFinalPrice();
 
-  alert("Dziękujemy za zakup :)");
+  showAlert("Dziękujemy za zakup :)");
+}
+
+function showAlert(msg: string) {
+  document.getElementById("alertMsg").innerText = msg;
+  $("#alertModal")
+    .modal()
+    .show();
 }
 
 $(function() {

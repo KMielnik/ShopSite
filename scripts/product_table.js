@@ -6,9 +6,9 @@ function createButtonsForRow(index) {
     deleteButton.classList.add("btn");
     deleteButton.classList.add("btn-danger");
     deleteButton.onclick = e => {
+        showAlert("Usunięto produkt: " + productsList[index].name);
         productsList.splice(index, 1);
         refreshProductsListTable();
-        alert("Usunięto wiersz: " + (index + 1));
     };
     let editButton = document.createElement("button");
     editButton.appendChild(document.createTextNode("Edytuj"));
@@ -66,11 +66,11 @@ function createButtonsForRow(index) {
     addToCartButton.onclick = e => {
         let cart = JSON.parse(localStorage.getItem("cartProducts")) ?? [];
         if (cart.some(cartItem => cartItem.product.name == productsList[index].name)) {
-            alert("Produkt już znajduje się w koszyku.");
+            showAlert("Produkt już znajduje się w koszyku.");
         }
         else {
             cart.push(new CartItem(productsList[index]));
-            alert("Dodano do koszyka.");
+            showAlert("Dodano do koszyka.");
         }
         localStorage.setItem("cartProducts", JSON.stringify(cart));
     };
@@ -127,7 +127,7 @@ function exportProductsToJSON() {
         document.removeEventListener("copy", this.e);
     });
     document.execCommand("copy");
-    alert("Skopiowano JSON do schowka");
+    showAlert("Skopiowano JSON do schowka");
 }
 function importProductsFromJSON() {
     let xhhtp = new XMLHttpRequest();

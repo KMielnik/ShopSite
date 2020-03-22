@@ -202,7 +202,7 @@ function _clearValidation() {
 function onSubmitFormClick() {
   if (validateForm()) {
     if (productsList.some(product => product.name == $("#productName").val())) {
-      alert("Ten produkt już istnieje!");
+      showAlert("Ten produkt już istnieje!");
     } else {
       let product = new Product(
         $("#productName").val() as string,

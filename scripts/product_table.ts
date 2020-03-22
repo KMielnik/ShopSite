@@ -7,9 +7,9 @@ function createButtonsForRow(index: number): HTMLDivElement {
   deleteButton.classList.add("btn");
   deleteButton.classList.add("btn-danger");
   deleteButton.onclick = e => {
+    showAlert("Usunięto produkt: " + productsList[index].name);
     productsList.splice(index, 1);
     refreshProductsListTable();
-    alert("Usunięto wiersz: " + (index + 1));
   };
 
   let editButton = document.createElement("button");
@@ -77,10 +77,10 @@ function createButtonsForRow(index: number): HTMLDivElement {
     if (
       cart.some(cartItem => cartItem.product.name == productsList[index].name)
     ) {
-      alert("Produkt już znajduje się w koszyku.");
+      showAlert("Produkt już znajduje się w koszyku.");
     } else {
       cart.push(new CartItem(productsList[index]));
-      alert("Dodano do koszyka.");
+      showAlert("Dodano do koszyka.");
     }
 
     localStorage.setItem("cartProducts", JSON.stringify(cart));
@@ -155,7 +155,7 @@ function exportProductsToJSON() {
   });
   document.execCommand("copy");
 
-  alert("Skopiowano JSON do schowka");
+  showAlert("Skopiowano JSON do schowka");
 }
 
 function importProductsFromJSON() {

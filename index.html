@@ -136,7 +136,7 @@
         <div class="col-3"></div>
         <div class="col-6">
           <div class="container-fluid mx-auto my-2">
-            <form>
+            <form id="productsForm">
               <div class="form-group">
                 <label for="productName">Nazwa towaru</label>
                 <input
@@ -255,7 +255,7 @@
                       class="form-check-input"
                       type="radio"
                       name="productRating"
-                      id="productRating"
+                      id="productRating1"
                       value="1"
                     />
                     1
@@ -265,7 +265,7 @@
                       class="form-check-input"
                       type="radio"
                       name="productRating"
-                      id="productRating"
+                      id="productRating2"
                       value="2"
                     />
                     2
@@ -275,7 +275,7 @@
                       class="form-check-input"
                       type="radio"
                       name="productRating"
-                      id="productRating"
+                      id="productRating3"
                       value="3"
                     />
                     3
@@ -285,7 +285,7 @@
                       class="form-check-input"
                       type="radio"
                       name="productRating"
-                      id="productRating"
+                      id="productRating4"
                       value="4"
                     />
                     4
@@ -295,7 +295,7 @@
                       class="form-check-input"
                       type="radio"
                       name="productRating"
-                      id="productRating"
+                      id="productRating5"
                       value="5"
                     />
                     5
@@ -333,7 +333,11 @@
 
           <div class="container-fluid mx-auto my-2">
             <div class="d-flex justify-content-between">
-              <button>ss</button>
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-secondary" onclick="exportProductsToJSON()">Export</button>
+                <button type="button" class="btn btn-secondary" onclick="importProductsFromJSON()">Import</button>
+              </div>
+
               <div class="dropdown open">
                 <button
                   class="btn btn-secondary dropdown-toggle"
@@ -363,6 +367,7 @@
                   <th>Kategoria</th>
                   <th>Dodatkowe opcje</th>
                   <th>Ocena</th>
+                  <th>Opcje</th>
                 </tr>
               </thead>
               <tbody></tbody>

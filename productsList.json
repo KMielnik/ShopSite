@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Marchew",
+    "code": "Ca-RR",
+    "price": "1.50",
+    "Vat": "23",
+    "priceVat": "1.85",
+    "category": "Broń",
+    "optionals": ["Zmielenie", "Opcja niespodzianka"],
+    "rating": "4",
+    "image": "default.png"
+  },
+  {
+    "name": "Maseczka",
+    "code": "C0-V1",
+    "price": "3901.00",
+    "Vat": "100",
+    "priceVat": "7802.00",
+    "category": "Broń",
+    "optionals": ["Brokat", "Opcja niespodzianka"],
+    "rating": "5",
+    "image": "default.png"
+  },
+  {
+    "name": "Kabanos",
+    "code": "ka-bA",
+    "price": "9.00",
+    "Vat": "8",
+    "priceVat": "9.72",
+    "category": "Elektronika",
+    "optionals": ["Zmielenie", "Złamanie"],
+    "rating": "4",
+    "image": "default.png"
+  },
+  {
+    "name": "Etui",
+    "code": "eT-u1",
+    "price": "20.00",
+    "Vat": "20",
+    "priceVat": "24.00",
+    "category": "Materace",
+    "optionals": ["Brokat", "Zmielenie"],
+    "rating": "2",
+    "image": "default.png"
+  },
+  {
+    "name": "Ciasto",
+    "code": "kC-al",
+    "price": "29.99",
+    "Vat": "19",
+    "priceVat": "35.69",
+    "category": "Materace",
+    "optionals": ["Zmielenie", "Zamoczenie"],
+    "rating": "4",
+    "image": "default.png"
+  },
+  {
+    "name": "Drewno",
+    "code": "hA-hA",
+    "price": "23.33",
+    "Vat": "12",
+    "priceVat": "26.13",
+    "category": "Elektronika",
+    "optionals": ["Brokat", "Złamanie"],
+    "rating": "2",
+    "image": "default.png"
+  },
+  {
+    "name": "Baton",
+    "code": "0O-00",
+    "price": "3.33",
+    "Vat": "13",
+    "priceVat": "3.76",
+    "category": "Elektronika",
+    "optionals": ["Zamoczenie", "Złamanie"],
+    "rating": "1",
+    "image": "default.png"
+  },
+  {
+    "name": "Kontroller",
+    "code": "12-12",
+    "price": "299.99",
+    "Vat": "23",
+    "priceVat": "368.99",
+    "category": "Elektronika",
+    "optionals": ["Zmielenie", "Złamanie"],
+    "rating": "5",
+    "image": "default.png"
+  },
+  {
+    "name": "Płatki",
+    "code": "XD-xd",
+    "price": "9.99",
+    "Vat": "23",
+    "priceVat": "12.29",
+    "category": "Broń",
+    "optionals": ["Zmielenie", "Zamoczenie"],
+    "rating": "1",
+    "image": "default.png"
+  },
+  {
+    "name": "Oranżada",
+    "code": "He-Le",
+    "price": "2.00",
+    "Vat": "2",
+    "priceVat": "2.04",
+    "category": "Broń",
+    "optionals": ["Zmielenie", "Opcja niespodzianka"],
+    "rating": "2",
+    "image": "default.png"
+  }
+]

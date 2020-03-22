@@ -38,7 +38,7 @@ function _calculateProductPriceVat() {
     if (isValid) {
         let productPrice = $("#productPrice").val();
         let productVat = $("#productVat").val();
-        let productPriceVat = parseFloat((productPrice * (productVat / 100)).toFixed(2) + +productPrice).toFixed(2);
+        let productPriceVat = (parseFloat((productPrice * (productVat / 100)).toFixed(2)) + +productPrice).toFixed(2);
         productPriceVatObject.val(productPriceVat);
     }
     else {
@@ -90,7 +90,7 @@ function validateProductOptionals() {
     return isValid;
 }
 function validateProductRating() {
-    let productRatingObject = $("#productRating");
+    let productRatingObject = $("input[name=productRating]:checked");
     let productRating = productRatingObject.val();
     let isValid = true;
     if (productRating == undefined)
@@ -125,9 +125,19 @@ function onSubmitFormClick() {
             alert("Ten produkt już istnieje!");
         }
         else {
-            let product = new Product($("#productName").val(), $("#productCode").val(), $("#productPrice").val(), $("#productVat").val(), $("#productPriceVat").val(), $("#productCategory").val(), $("#productOptionals").val(), $("#productRating").val(), $("#productImage").val());
+            let product = new Product($("#productName").val(), $("#productCode").val(), $("#productPrice").val(), $("#productVat").val(), $("#productPriceVat").val(), $("#productCategory").val(), $("#productOptionals").val(), $("input[name=productRating]:checked").val(), $("#productImage").val());
             productsList.push(product);
             refreshProductsListTable();
+            document.getElementById("productsForm").reset();
+            $("#productName").removeClass("is-valid");
+            $("#productCode").removeClass("is-valid");
+            $("#productPrice").removeClass("is-valid");
+            $("#productVat").removeClass("is-valid");
+            $("#productPriceVat").removeClass("is-valid");
+            $("#productCategory").removeClass("is-valid");
+            $("#productOptionals").removeClass("is-valid");
+            $("input[name=productRating]:checked").removeClass("is-valid");
+            $("#productImage").removeClass("is-valid");
         }
     }
 }

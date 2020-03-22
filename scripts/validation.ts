@@ -54,8 +54,8 @@ function _calculateProductPriceVat() {
     let productPrice = $("#productPrice").val() as number;
     let productVat = $("#productVat").val() as number;
 
-    let productPriceVat = parseFloat(
-      (productPrice * (productVat / 100)).toFixed(2) + +productPrice
+    let productPriceVat = (
+      parseFloat((productPrice * (productVat / 100)).toFixed(2)) + +productPrice
     ).toFixed(2);
 
     productPriceVatObject.val(productPriceVat);
@@ -132,7 +132,9 @@ function validateProductOptionals(): boolean {
 }
 
 function validateProductRating(): boolean {
-  let productRatingObject = $("#productRating") as JQuery<HTMLInputElement>;
+  let productRatingObject = $("input[name=productRating]:checked") as JQuery<
+    HTMLInputElement
+  >;
   let productRating = productRatingObject.val();
 
   let isValid = true;
@@ -193,12 +195,23 @@ function onSubmitFormClick() {
         $("#productPriceVat").val() as number,
         $("#productCategory").val() as string,
         $("#productOptionals").val() as string[],
-        $("#productRating").val() as number,
+        $("input[name=productRating]:checked").val() as number,
         $("#productImage").val() as string
       );
 
       productsList.push(product);
       refreshProductsListTable();
+      (document.getElementById("productsForm") as HTMLFormElement).reset();
+
+      $("#productName").removeClass("is-valid");
+      $("#productCode").removeClass("is-valid");
+      $("#productPrice").removeClass("is-valid");
+      $("#productVat").removeClass("is-valid");
+      $("#productPriceVat").removeClass("is-valid");
+      $("#productCategory").removeClass("is-valid");
+      $("#productOptionals").removeClass("is-valid");
+      $("input[name=productRating]:checked").removeClass("is-valid");
+      $("#productImage").removeClass("is-valid");
     }
   }
 }

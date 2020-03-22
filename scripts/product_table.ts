@@ -1,5 +1,11 @@
 let productsList: Product[] = [];
 
+function createButtonsForRow(index: number): HTMLDivElement {
+  let div = document.createElement("div");
+div.classList.add("container-fluid");
+  return div;
+}
+
 function refreshProductsListTable() {
   $("#productsTableHTML tbody tr").remove();
 
@@ -7,7 +13,7 @@ function refreshProductsListTable() {
     .getElementById("productsTableHTML")
     .getElementsByTagName("tbody")[0];
 
-  productsList.forEach(product => {
+  productsList.forEach((product, i) => {
     let newRow = tbody.insertRow(-1);
 
     newRow.insertCell(0).appendChild(document.createTextNode(product.name));
@@ -32,6 +38,8 @@ function refreshProductsListTable() {
     newRow
       .insertCell(7)
       .appendChild(document.createTextNode(product.rating.toString()));
+
+    newRow.insertCell(8).appendChild(createButtonsForRow(i));
   });
 
   $("#productsTableHTML").trigger("update");
@@ -54,6 +62,9 @@ $(function() {
   $("#productsTableHTML thead")
     .find("th:contains(opcje)")
     .data("sorter", false);
+  $("#productsTableHTML thead")
+    .find("th:contains(Opcje)")
+    .data("sorter", false);
 
   $("#productsTableHTML").tablesorter({
     theme: "blue",
@@ -64,3 +75,28 @@ $(function() {
     }
   });
 });
+
+function exportProductsToJSON()
+{
+  document.addEventListener('copy', (e: ClipboardEvent) => {
+    e.clipboardData.setData('text/plain', JSON.stringify(productsList));
+    e.preventDefault();
+    document.removeEventListener('copy', this.e);
+  });
+  document.execCommand('copy');
+
+  alert("Skopiowano JSON do schowka");
+}
+
+
+function importProductsFromJSON()
+{
+  let xhhtp = new XMLHttpRequest();
+  xhhtp.onload = (e)=>{
+    let products = JSON.parse(xhhtp.responseText) as Product[];
+    productsList = products;
+    refreshProductsListTable();
+  }
+  xhhtp.open("GET","../productsList.json");
+  xhhtp.send();
+}

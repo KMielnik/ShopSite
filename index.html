@@ -43,6 +43,7 @@
 
     <script src="scripts/product.js"></script>
     <script src="scripts/product_table.js"></script>
+    <script src="scripts/product_gallery.js"></script>
     <script src="scripts/cart_table.js"></script>
     <script src="scripts/validation.js"></script>
   </head>
@@ -416,7 +417,7 @@
                 </button>
               </div>
 
-              <div class="dropdown open">
+              <div class="dropdown open" id="sortDropdown">
                 <button
                   class="btn btn-secondary dropdown-toggle"
                   type="button"
@@ -463,6 +464,29 @@
                   </button>
                 </div>
               </div>
+              <div class="dropdown open dropup">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  data-toggle="dropdown"
+                >
+                  Typ listy
+                </button>
+                <div class="dropdown-menu">
+                  <button
+                    class="dropdown-item"
+                    onclick="changeProductListType('list')"
+                  >
+                    Lista
+                  </button>
+                  <button
+                    class="dropdown-item"
+                    onclick="changeProductListType('gallery')"
+                  >
+                    Galeria zdjęć
+                  </button>
+                </div>
+              </div>
             </div>
             <div class="table-responsive">
               <table id="productsTableHTML">
@@ -482,6 +506,7 @@
                 <tbody></tbody>
               </table>
             </div>
+            <div id="productsGalleryHTML" class="container-fluid my-3" hidden></div>
           </div>
         </div>
         <div class="col-3">

@@ -19,7 +19,7 @@
     "category": "Broń",
     "optionals": ["Brokat", "Opcja niespodzianka"],
     "rating": "5",
-    "image": "default.png"
+    "image": "maseczka.jpg"
   },
   {
     "name": "Kabanos",
@@ -30,7 +30,7 @@
     "category": "Elektronika",
     "optionals": ["Zmielenie", "Złamanie"],
     "rating": "4",
-    "image": "default.png"
+    "image": "kabanos.jfif"
   },
   {
     "name": "Etui",
@@ -41,7 +41,7 @@
     "category": "Materace",
     "optionals": ["Brokat", "Zmielenie"],
     "rating": "2",
-    "image": "default.png"
+    "image": "etui.jpg"
   },
   {
     "name": "Ciasto",
@@ -52,7 +52,7 @@
     "category": "Materace",
     "optionals": ["Zmielenie", "Zamoczenie"],
     "rating": "4",
-    "image": "cake.png"
+    "image": "portal-cake.jpg"
   },
   {
     "name": "Drewno",
@@ -63,7 +63,7 @@
     "category": "Elektronika",
     "optionals": ["Brokat", "Złamanie"],
     "rating": "2",
-    "image": "wood.png"
+    "image": "wood.jpg"
   },
   {
     "name": "Baton",
@@ -85,7 +85,7 @@
     "category": "Elektronika",
     "optionals": ["Zmielenie", "Złamanie"],
     "rating": "5",
-    "image": "controller.png"
+    "image": "controller.jpg"
   },
   {
     "name": "Płatki",

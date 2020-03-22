@@ -1,6 +1,6 @@
 let productsList: Product[] = [];
 
-function createButtonsForRow(index: number): HTMLDivElement {
+function createButtonsForRow(index: number, vertical = true): HTMLDivElement {
   let deleteButton = document.createElement("button");
   deleteButton.appendChild(document.createTextNode("Usuń"));
   deleteButton.setAttribute("type", "button");
@@ -32,8 +32,6 @@ function createButtonsForRow(index: number): HTMLDivElement {
     $("#productOptionals").val(productsList[index].optionals);
     switch (+productsList[index].rating) {
       case 1:
-        console.log("XD");
-
         document
           .getElementById("productRating1")
           .setAttribute("checked", "true");
@@ -87,7 +85,8 @@ function createButtonsForRow(index: number): HTMLDivElement {
   };
 
   let buttonGroupDiv = document.createElement("div");
-  buttonGroupDiv.classList.add("btn-group-vertical");
+  if (vertical) buttonGroupDiv.classList.add("btn-group-vertical");
+  else buttonGroupDiv.classList.add("btn-group");
   buttonGroupDiv.classList.add("btn-group-sm");
   buttonGroupDiv.classList.add("ml-auto");
   buttonGroupDiv.setAttribute("role", "group");
@@ -141,6 +140,7 @@ function refreshProductsListTable() {
   });
 
   $("#productsTableHTML").trigger("update");
+  refreshProductGallery();
 }
 
 function sortProductsTable(column: number, order: string) {

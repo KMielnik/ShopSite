@@ -1,5 +1,5 @@
 let productsList = [];
-function createButtonsForRow(index) {
+function createButtonsForRow(index, vertical = true) {
     let deleteButton = document.createElement("button");
     deleteButton.appendChild(document.createTextNode("Usuń"));
     deleteButton.setAttribute("type", "button");
@@ -28,7 +28,6 @@ function createButtonsForRow(index) {
         $("#productOptionals").val(productsList[index].optionals);
         switch (+productsList[index].rating) {
             case 1:
-                console.log("XD");
                 document
                     .getElementById("productRating1")
                     .setAttribute("checked", "true");
@@ -75,7 +74,10 @@ function createButtonsForRow(index) {
         localStorage.setItem("cartProducts", JSON.stringify(cart));
     };
     let buttonGroupDiv = document.createElement("div");
-    buttonGroupDiv.classList.add("btn-group-vertical");
+    if (vertical)
+        buttonGroupDiv.classList.add("btn-group-vertical");
+    else
+        buttonGroupDiv.classList.add("btn-group");
     buttonGroupDiv.classList.add("btn-group-sm");
     buttonGroupDiv.classList.add("ml-auto");
     buttonGroupDiv.setAttribute("role", "group");
@@ -116,6 +118,7 @@ function refreshProductsListTable() {
         newRow.insertCell().appendChild(createButtonsForRow(i));
     });
     $("#productsTableHTML").trigger("update");
+    refreshProductGallery();
 }
 function sortProductsTable(column, order) {
     $("#productsTableHTML").trigger("sorton", [[[column, order]]]);

@@ -182,19 +182,23 @@ function validateForm(): boolean {
 
 function onSubmitFormClick() {
   if (validateForm()) {
-    let product = new Product(
-      $("#productName").val() as string,
-      $("#productCode").val() as string,
-      $("#productPrice").val() as number,
-      $("#productVat").val() as number,
-      $("#productPriceVat").val() as number,
-      $("#productCategory").val() as string,
-      $("#productOptionals").val() as string[],
-      $("#productRating").val() as number,
-      $("#productImage").val() as string
-    );
+    if (productsList.some(product => product.name == $("#productName").val())) {
+      alert("Ten produkt już istnieje!");
+    } else {
+      let product = new Product(
+        $("#productName").val() as string,
+        $("#productCode").val() as string,
+        $("#productPrice").val() as number,
+        $("#productVat").val() as number,
+        $("#productPriceVat").val() as number,
+        $("#productCategory").val() as string,
+        $("#productOptionals").val() as string[],
+        $("#productRating").val() as number,
+        $("#productImage").val() as string
+      );
 
-    productsList.push(product);
-    refreshProductsListTable();
+      productsList.push(product);
+      refreshProductsListTable();
+    }
   }
 }

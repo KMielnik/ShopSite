@@ -121,9 +121,14 @@ function validateForm() {
 }
 function onSubmitFormClick() {
     if (validateForm()) {
-        let product = new Product($("#productName").val(), $("#productCode").val(), $("#productPrice").val(), $("#productVat").val(), $("#productPriceVat").val(), $("#productCategory").val(), $("#productOptionals").val(), $("#productRating").val(), $("#productImage").val());
-        productsList.push(product);
-        refreshProductsListTable();
+        if (productsList.some(product => product.name == $("#productName").val())) {
+            alert("Ten produkt już istnieje!");
+        }
+        else {
+            let product = new Product($("#productName").val(), $("#productCode").val(), $("#productPrice").val(), $("#productVat").val(), $("#productPriceVat").val(), $("#productCategory").val(), $("#productOptionals").val(), $("#productRating").val(), $("#productImage").val());
+            productsList.push(product);
+            refreshProductsListTable();
+        }
     }
 }
 //# sourceMappingURL=validation.js.map

@@ -43,6 +43,7 @@
 
     <script src="scripts/product.js"></script>
     <script src="scripts/product_table.js"></script>
+    <script src="scripts/cart_table.js"></script>
     <script src="scripts/validation.js"></script>
   </head>
 
@@ -55,9 +56,6 @@
         type="button"
         data-toggle="collapse"
         data-target="#collapsibleNavId"
-        aria-controls="collapsibleNavId"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -83,6 +81,7 @@
           type="button"
           data-toggle="modal"
           data-target="#cartModal"
+          onclick="refershCartTable()"
         >
           Koszyk
         </button>
@@ -91,39 +90,80 @@
     <!-- /Navbar -->
 
     <!-- Cart Modal -->
-    <div
-      class="modal fade"
-      id="cartModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="modelTitleId"
-      aria-hidden="true"
-    >
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Twój koszyk</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <button type="button" class="close" data-dismiss="modal"></button>
           </div>
           <div class="modal-body">
-            Body
+            <div class="container">
+              <div class="row">
+                <table
+                  id="cartTable"
+                  class="table table-striped table-hover table-sm"
+                >
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Nazwa</th>
+                      <th>Cena brutto</th>
+                      <th>Ilość</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <div class="row">
+                <div class="container-fluid">
+                  <form class="form-inline">
+                    <div class="form-group container-fluid">
+                      <div
+                        class="d-flex justify-content-between container-fluid"
+                      >
+                        <label>Dostawa: </label>
+                        <select
+                          id="deliveryOption"
+                          class="form-control"
+                          onchange="calculateFinalPrice()"
+                        >
+                          <option value="0.00">Odbiór osobisty: 0.00zł</option>
+                          <option value="15.99">Kurier: 15.99zł</option>
+                          <option value="8.99">Paczkomat: 8.99zł</option>
+                          <option value="4.99">Gołąb pocztowy: 4.99zł</option>
+                        </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Save</button>
+            <div class="form-group p-0 m-0">
+              <label>Do zaplaty: </label>
+              <input
+                id="finalPriceInput"
+                type="text"
+                placeholder="0.00zł"
+                readonly
+              />
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Zamknij
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-dismiss="modal"
+                onclick="heBought()"
+              >
+                Kup
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -407,22 +447,24 @@
                 </div>
               </div>
             </div>
-            <table id="productsTableHTML">
-              <thead>
-                <tr>
-                  <th>Nazwa</th>
-                  <th>Kod</th>
-                  <th>Cena netto</th>
-                  <th>VAT</th>
-                  <th>Cena brutto</th>
-                  <th>Kategoria</th>
-                  <th>Dodatkowe opcje</th>
-                  <th>Ocena</th>
-                  <th>Opcje</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+            <div class="table-responsive">
+              <table id="productsTableHTML">
+                <thead>
+                  <tr>
+                    <th>Nazwa</th>
+                    <th>Kod</th>
+                    <th>Cena netto</th>
+                    <th>VAT</th>
+                    <th>Cena brutto</th>
+                    <th>Kategoria</th>
+                    <th>Dodatkowe opcje</th>
+                    <th>Ocena</th>
+                    <th>Opcje</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
           </div>
         </div>
         <div class="col-3">

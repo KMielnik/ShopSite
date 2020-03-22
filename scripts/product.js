@@ -11,4 +11,10 @@ class Product {
         this.image = image;
     }
 }
+class CartItem {
+    constructor(product, quantity = 1) {
+        this.product = product;
+        this.quantity = quantity;
+    }
+}
 //# sourceMappingURL=product.js.map

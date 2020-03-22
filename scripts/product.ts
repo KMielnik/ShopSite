@@ -11,3 +11,7 @@ class Product {
     public image: string
   ) {}
 }
+
+class CartItem {
+  constructor(public product: Product, public quantity = 1) {}
+}

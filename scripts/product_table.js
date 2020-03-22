@@ -65,11 +65,11 @@ function createButtonsForRow(index) {
     addToCartButton.classList.add("btn-success");
     addToCartButton.onclick = e => {
         let cart = JSON.parse(localStorage.getItem("cartProducts")) ?? [];
-        if (cart.some(product => product.name == productsList[index].name)) {
+        if (cart.some(cartItem => cartItem.product.name == productsList[index].name)) {
             alert("Produkt już znajduje się w koszyku.");
         }
         else {
-            cart.push(productsList[index]);
+            cart.push(new CartItem(productsList[index]));
             alert("Dodano do koszyka.");
         }
         localStorage.setItem("cartProducts", JSON.stringify(cart));
@@ -95,25 +95,25 @@ function refreshProductsListTable() {
         .getElementsByTagName("tbody")[0];
     productsList.forEach((product, i) => {
         let newRow = tbody.insertRow(-1);
-        newRow.insertCell(0).appendChild(document.createTextNode(product.name));
-        newRow.insertCell(1).appendChild(document.createTextNode(product.code));
+        newRow.insertCell().appendChild(document.createTextNode(product.name));
+        newRow.insertCell().appendChild(document.createTextNode(product.code));
         newRow
-            .insertCell(2)
+            .insertCell()
             .appendChild(document.createTextNode(product.price.toString()));
         newRow
-            .insertCell(3)
+            .insertCell()
             .appendChild(document.createTextNode(product.Vat.toString() + "%"));
         newRow
-            .insertCell(4)
+            .insertCell()
             .appendChild(document.createTextNode(product.priceVat.toString()));
-        newRow.insertCell(5).appendChild(document.createTextNode(product.category));
+        newRow.insertCell().appendChild(document.createTextNode(product.category));
         newRow
-            .insertCell(6)
+            .insertCell()
             .appendChild(document.createTextNode(product.optionals.reduce((acc, x) => acc + ", " + x)));
         newRow
-            .insertCell(7)
+            .insertCell()
             .appendChild(document.createTextNode(product.rating.toString()));
-        newRow.insertCell(8).appendChild(createButtonsForRow(i));
+        newRow.insertCell().appendChild(createButtonsForRow(i));
     });
     $("#productsTableHTML").trigger("update");
 }

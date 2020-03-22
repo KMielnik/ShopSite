@@ -34,16 +34,33 @@ function refreshProductsListTable() {
       .appendChild(document.createTextNode(product.rating.toString()));
   });
 
-  $("#productsTableHTML").trigger("update")
+  $("#productsTableHTML").trigger("update");
+}
+
+function sortProductsTable(column: number, order: string) {
+  $("#productsTableHTML").trigger("sorton", [[[column, order]]]);
 }
 
 $(function() {
+  $("#productsTableHTML thead")
+    .find("th:contains(Kod)")
+    .data("sorter", false);
+  $("#productsTableHTML thead")
+    .find("th:contains(VAT)")
+    .data("sorter", false);
+  $("#productsTableHTML thead")
+    .find("th:contains(Kategoria)")
+    .data("sorter", false);
+  $("#productsTableHTML thead")
+    .find("th:contains(opcje)")
+    .data("sorter", false);
+
   $("#productsTableHTML").tablesorter({
     theme: "blue",
-    
+
     widgets: ["uitheme", "zebra"],
-    widgetOptions : {
-        zebra : [ "even", "odd" ]
-      }
+    widgetOptions: {
+      zebra: ["even", "odd"]
+    }
   });
 });

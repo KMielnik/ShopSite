@@ -329,7 +329,29 @@
                 Dodaj
               </button>
             </form>
+          </div>
 
+          <div class="container-fluid mx-auto my-2">
+            <div class="d-flex justify-content-between">
+              <button>ss</button>
+              <div class="dropdown open">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  data-toggle="dropdown"
+                >
+                  Sortuj
+                </button>
+                <div class="dropdown-menu">
+                  <button class="dropdown-item" onclick="sortProductsTable(4, 'a')">Cena brutto rosnąco</button>
+                  <button class="dropdown-item" onclick="sortProductsTable(4, 'd')">Cena brutto malejąco</button>
+                  <button class="dropdown-item" onclick="sortProductsTable(7, 'a')">Ocena rosnąco</button>
+                  <button class="dropdown-item" onclick="sortProductsTable(7, 'd')">Ocena malejąco</button>
+                  <button class="dropdown-item" onclick="sortProductsTable(0, 'a')">Nazwa rosnąco</button>
+                  <button class="dropdown-item" onclick="sortProductsTable(0, 'd')">Nazwa malejąco</button>
+                </div>
+              </div>
+            </div>
             <table id="productsTableHTML">
               <thead>
                 <tr>

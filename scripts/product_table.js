@@ -27,7 +27,22 @@ function refreshProductsListTable() {
     });
     $("#productsTableHTML").trigger("update");
 }
+function sortProductsTable(column, order) {
+    $("#productsTableHTML").trigger("sorton", [[[column, order]]]);
+}
 $(function () {
+    $("#productsTableHTML thead")
+        .find("th:contains(Kod)")
+        .data("sorter", false);
+    $("#productsTableHTML thead")
+        .find("th:contains(VAT)")
+        .data("sorter", false);
+    $("#productsTableHTML thead")
+        .find("th:contains(Kategoria)")
+        .data("sorter", false);
+    $("#productsTableHTML thead")
+        .find("th:contains(opcje)")
+        .data("sorter", false);
     $("#productsTableHTML").tablesorter({
         theme: "blue",
         widgets: ["uitheme", "zebra"],

@@ -66,6 +66,8 @@ function heBought() {
   refershCartTable();
   calculateFinalPrice();
 
+  document.getElementById("cartItemsBadge").innerText = "0"
+
   showAlert("Dziękujemy za zakup :)");
 }
 

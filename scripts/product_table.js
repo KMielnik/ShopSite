@@ -72,6 +72,7 @@ function createButtonsForRow(index, vertical = true) {
             showAlert("Dodano do koszyka.");
         }
         localStorage.setItem("cartProducts", JSON.stringify(cart));
+        document.getElementById("cartItemsBadge").innerText = cart.length.toString();
     };
     let buttonGroupDiv = document.createElement("div");
     if (vertical)
@@ -165,5 +166,7 @@ $(function () {
             zebra: ["even", "odd"]
         }
     });
+    let cart = JSON.parse(localStorage.getItem("cartProducts")) ?? [];
+    document.getElementById("cartItemsBadge").innerText = cart.length.toString();
 });
 //# sourceMappingURL=product_table.js.map

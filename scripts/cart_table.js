@@ -43,6 +43,7 @@ function heBought() {
     localStorage.removeItem("cartProducts");
     refershCartTable();
     calculateFinalPrice();
+    document.getElementById("cartItemsBadge").innerText = "0";
     showAlert("Dziękujemy za zakup :)");
 }
 function showAlert(msg) {

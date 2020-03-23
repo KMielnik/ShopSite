@@ -82,6 +82,9 @@ function createButtonsForRow(index: number, vertical = true): HTMLDivElement {
     }
 
     localStorage.setItem("cartProducts", JSON.stringify(cart));
+    document.getElementById(
+      "cartItemsBadge"
+    ).innerText = cart.length.toString();
   };
 
   let buttonGroupDiv = document.createElement("div");
@@ -194,4 +197,9 @@ $(function() {
       zebra: ["even", "odd"]
     }
   });
+
+  let cart =
+    (JSON.parse(localStorage.getItem("cartProducts")) as CartItem[]) ?? [];
+
+  document.getElementById("cartItemsBadge").innerText = cart.length.toString();
 });

@@ -140,7 +140,7 @@ function importProductsFromJSON() {
         productsList = products;
         refreshProductsListTable();
     };
-    xhhtp.open("GET", "../productsList.json");
+    xhhtp.open("GET", "productsList.json");
     xhhtp.send();
 }
 $(function () {

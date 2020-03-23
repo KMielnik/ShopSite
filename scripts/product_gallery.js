@@ -13,7 +13,7 @@ function changeProductListType(type) {
 function _generateProductCard(product, index) {
     let imgTop = document.createElement("img");
     imgTop.classList.add("card-img-top");
-    imgTop.src = "../images/" + product.image;
+    imgTop.src = "images/" + product.image;
     let title = document.createElement("h5");
     title.classList.add("card-title");
     title.innerText = product.name;

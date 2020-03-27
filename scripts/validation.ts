@@ -141,7 +141,10 @@ function validateProductRating(): boolean {
 
   if (productRating == undefined) isValid = false;
 
-  isValid ? _makeValid(productRatingObject) : _makeInvalid(productRatingObject);
+  let productRatingBox = $("input[name=productRating]") as JQuery<
+    HTMLInputElement
+  >;
+  isValid ? _makeValid(productRatingBox) : _makeInvalid(productRatingBox);
   //TODO: Fix validation on radio buttons.
 
   return isValid;
@@ -190,7 +193,7 @@ function _clearValidation() {
   $("#productPriceVat").removeClass("is-valid");
   $("#productCategory").removeClass("is-valid");
   $("#productOptionals").removeClass("is-valid");
-  $("input[name=productRating]:checked").removeClass("is-valid");
+  $("input[name=productRating]").removeClass("is-valid");
   document.getElementById("productRating1").removeAttribute("checked");
   document.getElementById("productRating2").removeAttribute("checked");
   document.getElementById("productRating3").removeAttribute("checked");

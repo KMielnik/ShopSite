@@ -48,7 +48,7 @@
     <script src="scripts/validation.js"></script>
   </head>
 
-  <body style="padding-top: 65px; padding-bottom: 20px;">
+  <body class="bg-light" style="padding-top: 65px; padding-bottom: 20px;">
     <!-- Navbar-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="#">mk41446</a>
@@ -191,192 +191,246 @@
     <!-- Body -->
     <div class="container-fluid bg-light">
       <div class="row">
-        <div class="col-3"></div>
-        <div class="col-6">
+        <div class="col-sm-12 col-lg-2 col-xl-3 text-center p-2">Lewy</div>
+        <div class="col-sm-12 col-lg-8 col-xl-6">
           <div class="container-fluid mx-auto my-2">
             <form id="productsForm">
-              <div class="form-group">
-                <label for="productName">Nazwa towaru</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="productName"
-                  onblur="validateProductName()"
-                  onchange="validateProductName()"
-                  id="productName"
-                />
-                <div class="invalid-feedback">
-                  Tylko litery, max 10 znaków, obowiązkowe.
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="productCode">Kod towaru</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="productCode"
-                  onblur="validateProductCode()"
-                  onchange="validateProductCode()"
-                  id="productCode"
-                />
-                <div class="invalid-feedback">
-                  Format: XX-XX (X to cyfra/litera), obowiązkowe.
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="productPrice">Cena netto</label>
-                <input
-                  type="number"
-                  step=".01"
-                  class="form-control"
-                  name="productPrice"
-                  onblur="validateProductPrice()"
-                  onchange="validateProductPrice()"
-                  id="productPrice"
-                />
-                <div class="invalid-feedback">
-                  Tylko cyfry, obowiązkowe.
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="productVat">VAT</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  name="productVat"
-                  onblur="validateProductVat()"
-                  onchange="validateProductVat()"
-                  id="productVat"
-                />
-                <div class="invalid-feedback">
-                  Tylko cyfry (procenty), obowiązkowe.
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="productPriceVat">Cena brutto</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  name="productPriceVat"
-                  id="productPriceVat"
-                  readonly
-                />
-                <div class="invalid-feedback">
-                  Uzupełnij poprawnie cenę netto oraz VAT.
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="productCategory">Kategoria towaru</label>
-                <select
-                  class="form-control"
-                  name="productCategory"
-                  onblur="validateProductCategory()"
-                  onchange="validateProductCategory()"
-                  id="productCategory"
+              <div class="form-group row">
+                <label for="productName" class="col-sm-4 col-form-label"
+                  >Nazwa towaru</label
                 >
-                  <option value="" selected disabled hidden
-                    >Wybierz kategorie</option
-                  >
-                  <option>Elektronika</option>
-                  <option>Broń</option>
-                  <option>Materace</option>
-                </select>
-                <div class="invalid-feedback">
-                  Wybierz poprawną kategorie.
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="productOptionals">Dodatkowe opcje</label>
-                <select
-                  multiple
-                  class="custom-select"
-                  name="productOptionals"
-                  onblur="validateProductOptionals()"
-                  onchange="validateProductOptionals()"
-                  id="productOptionals"
-                >
-                  <option>Brokat</option>
-                  <option>Zmielenie</option>
-                  <option>Zamoczenie</option>
-                  <option>Złamanie</option>
-                  <option>Opcja niespodzianka</option>
-                </select>
-                <div class="invalid-feedback">
-                  Musisz wybrać 2 z 5 opcji. (Zaznaczaj z CTRL)
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="form-check form-check-inline">
-                  <label class="form-check-label">Ocena: </label>
-                  <label class="form-check-label px-2">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="productRating"
-                      id="productRating1"
-                      value="1"
-                    />
-                    1
-                  </label>
-                  <label class="form-check-label px-2">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="productRating"
-                      id="productRating2"
-                      value="2"
-                    />
-                    2
-                  </label>
-                  <label class="form-check-label px-2">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="productRating"
-                      id="productRating3"
-                      value="3"
-                    />
-                    3
-                  </label>
-                  <label class="form-check-label px-2">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="productRating"
-                      id="productRating4"
-                      value="4"
-                    />
-                    4
-                  </label>
-                  <label class="form-check-label px-2">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="productRating"
-                      id="productRating5"
-                      value="5"
-                    />
-                    5
-                  </label>
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="productName"
+                    onblur="validateProductName()"
+                    onchange="validateProductName()"
+                    id="productName"
+                  />
                   <div class="invalid-feedback">
-                    Wybierz ocenę ze skali.
+                    Tylko litery, max 10 znaków, obowiązkowe.
                   </div>
                 </div>
               </div>
-              <div class="form-group">
-                <label for="productImage">Zdjęcie towaru</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="productImage"
-                  onblur="validateProductPhoto()"
-                  onchange="validateProductPhoto()"
-                  id="productImage"
-                  value="default.png"
-                  disabled
-                />
-                <div class="invalid-feedback">
-                  Wybierz zdjęcie.
+              <div class="form-group row">
+                <label for="productCode" class="col-sm-4 col-form-label"
+                  >Kod towaru</label
+                >
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="productCode"
+                    onblur="validateProductCode()"
+                    onchange="validateProductCode()"
+                    id="productCode"
+                  />
+                  <div class="invalid-feedback">
+                    Format: XX-XX (X to cyfra/litera), obowiązkowe.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="productPrice" class="col-sm-4 col-form-label"
+                  >Cena netto</label
+                >
+                <div class="col-sm-8">
+                  <input
+                    type="number"
+                    step=".01"
+                    class="form-control"
+                    name="productPrice"
+                    onblur="validateProductPrice()"
+                    onchange="validateProductPrice()"
+                    id="productPrice"
+                  />
+                  <div class="invalid-feedback">
+                    Tylko cyfry, obowiązkowe.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="productVat" class="col-sm-4 col-form-label"
+                  >VAT</label
+                >
+                <div class="col-sm-8">
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="productVat"
+                    onblur="validateProductVat()"
+                    onchange="validateProductVat()"
+                    id="productVat"
+                  />
+                  <div class="invalid-feedback">
+                    Tylko cyfry (procenty), obowiązkowe.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="productPriceVat" class="col-sm-4 col-form-label"
+                  >Cena brutto</label
+                >
+                <div class="col-sm-8">
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="productPriceVat"
+                    id="productPriceVat"
+                    readonly
+                  />
+                  <div class="invalid-feedback">
+                    Uzupełnij poprawnie cenę netto oraz VAT.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="productCategory" class="col-sm-4 col-form-label"
+                  >Kategoria towaru</label
+                >
+                <div class="col-sm-8">
+                  <select
+                    class="form-control"
+                    name="productCategory"
+                    onblur="validateProductCategory()"
+                    onchange="validateProductCategory()"
+                    id="productCategory"
+                  >
+                    <option value="" selected disabled hidden
+                      >Wybierz kategorie</option
+                    >
+                    <option>Elektronika</option>
+                    <option>Broń</option>
+                    <option>Materace</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Wybierz poprawną kategorie.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="productOptionals" class="col-sm-4 col-form-label"
+                  >Dodatkowe opcje</label
+                >
+                <div class="col-sm-8">
+                  <select
+                    multiple
+                    class="custom-select"
+                    name="productOptionals"
+                    onblur="validateProductOptionals()"
+                    onchange="validateProductOptionals()"
+                    id="productOptionals"
+                  >
+                    <option>Brokat</option>
+                    <option>Zmielenie</option>
+                    <option>Zamoczenie</option>
+                    <option>Złamanie</option>
+                    <option>Opcja niespodzianka</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Musisz wybrać 2 z 5 opcji. (Zaznaczaj z CTRL)
+                  </div>
+                </div>
+              </div>
+              <fieldset class="form-group">
+                <div class="row">
+                  <legend class="col-form-label col-sm-4 pt-0">Ocena:</legend>
+                  <div class="col-sm-8">
+                    <div class="d-flex justify-content-between">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          onchange="validateProductRating()"
+                          name="productRating"
+                          id="productRating1"
+                          value="1"
+                        />
+                        <label class="form-check-label" for="productRating1"
+                          >1</label
+                        >
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          onchange="validateProductRating()"
+                          type="radio"
+                          name="productRating"
+                          id="productRating2"
+                          value="2"
+                        />
+                        <label class="form-check-label" for="productRating2"
+                          >2</label
+                        >
+                      </div>
+
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          onchange="validateProductRating()"
+                          type="radio"
+                          name="productRating"
+                          id="productRating3"
+                          value="3"
+                        />
+                        <label class="form-check-label" for="productRating3"
+                          >3</label
+                        >
+                      </div>
+
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          onchange="validateProductRating()"
+                          type="radio"
+                          name="productRating"
+                          id="productRating4"
+                          value="4"
+                        />
+                        <label class="form-check-label" for="productRating4"
+                          >4</label
+                        >
+                      </div>
+
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          onchange="validateProductRating()"
+                          type="radio"
+                          name="productRating"
+                          id="productRating5"
+                          value="5"
+                        />
+                        <label class="form-check-label" for="productRating5"
+                          >5</label
+                        >
+                        <div class="invalid-feedback">
+                          Wybierz ocenę ze skali.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <div class="form-group row">
+                <label for="productImage" class="col-sm-4 col-form-label"
+                  >Zdjęcie towaru</label
+                >
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="productImage"
+                    onblur="validateProductPhoto()"
+                    onchange="validateProductPhoto()"
+                    id="productImage"
+                    value="default.png"
+                    disabled
+                  />
+                  <div class="invalid-feedback">
+                    Wybierz zdjęcie.
+                  </div>
                 </div>
               </div>
               <button
@@ -399,7 +453,7 @@
           </div>
 
           <div class="container-fluid mx-auto my-2">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex flex-wrap justify-content-between">
               <div class="btn-group" role="group">
                 <button
                   type="button"
@@ -506,11 +560,15 @@
                 <tbody></tbody>
               </table>
             </div>
-            <div id="productsGalleryHTML" class="container-fluid my-3" hidden></div>
+            <div
+              id="productsGalleryHTML"
+              class="container-fluid my-3"
+              hidden
+            ></div>
           </div>
         </div>
-        <div class="col-3">
-          <div class="card shadow mx-auto my-2" style="width: 10rem;">
+        <div class="col-sm-12 col-lg-2 col-xl-3">
+          <div class="card shadow mx-auto" style="max-width: 10rem;">
             <img
               class="card-img-top"
               src="https://www.neolutionesport.com/wp-content/uploads/2017/03/default-avatar-knives-ninja.png"

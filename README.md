@@ -1,1 +1,3 @@
-# PDD-Strony2.0
+# ShopSite
+
+Basic site written using Bootstrap and typescript.
